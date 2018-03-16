@@ -4,7 +4,6 @@ State::State() {
 
 }
 
-
 void State::setID(int id) {
 
 }
@@ -25,6 +24,6 @@ void State::addTransition(transition) {
 
 }
 
-stateTransitions State::getTransitions() {
+State::stateTransitions State::getTransitions() {
     return transitions;
 }

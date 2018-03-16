@@ -4,18 +4,18 @@
 #include <vector>
 #include "State.h"
 
-typedef std::vector<stateTransitions> table;
-
 class MinDFA {
 public:
+    typedef std::vector<State::stateTransitions> table;
+
     MinDFA();
 
-    table getTransitionTable();
+    MinDFA::table getTransitionTable();
 
     State getStartState();
 
 private:
-    table transitionTable;
+    MinDFA::table transitionTable;
     State startState;
 };
 

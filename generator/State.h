@@ -3,11 +3,13 @@
 
 #include <vector>
 
-typedef std::pair<char *, State> transition;
-typedef std::vector<transition> stateTransitions;
-
 class State {
+
 public:
+    typedef std::pair<char *, State> transition;
+
+    typedef std::vector<State::transition> stateTransitions;
+
     State();
 
     void setID(int id);
@@ -20,12 +22,12 @@ public:
 
     void addTransition(transition);
 
-    stateTransitions getTransitions();
+    State::stateTransitions getTransitions();
 
 private:
     int id;
     bool acceptingState;
-    stateTransitions transitions;
+    State::stateTransitions transitions;
 };
 
 

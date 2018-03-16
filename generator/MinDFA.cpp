@@ -4,10 +4,10 @@ MinDFA::MinDFA() {
 
 }
 
-table MinDFA::getTransitionTable() {
-    return table();
+MinDFA::table MinDFA::getTransitionTable() {
+    return transitionTable;
 }
 
 State MinDFA::getStartState() {
-    return State();
+    return startState;
 }
