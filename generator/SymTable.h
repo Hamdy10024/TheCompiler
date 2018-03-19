@@ -14,7 +14,7 @@ using namespace std;
 class SymTable {
 
 
-public:
+/*public:
     SymTable();
 
     bool insert(SymTableEntry);
@@ -23,7 +23,7 @@ public:
 
 //add size
 private:
-    vector<SymTableEntry> entries;
+    vector<SymTableEntry> entries;*/
 };
 
 
