@@ -10,13 +10,8 @@ public:
 
     MinDFA();
 
-    MinDFA::table getTransitionTable();
-
-    State getStartState();
 
 private:
-    MinDFA::table transitionTable;
-    State startState;
 };
 
 #endif

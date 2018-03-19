@@ -25,7 +25,7 @@ public:
     State::stateTransitions getTransitions();
 
 private:
-    int id;
+    int id; // 0-based, used for indexing the transition table.
     bool acceptingState;
     State::stateTransitions transitions;
 };
