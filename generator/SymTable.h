@@ -14,18 +14,19 @@ using namespace std;
 class SymTable {
 
 
-/*public:
+public:
     SymTable();
 
     bool search_for_token(string token);
 
-    bool insert(SymTableEntry);
+    void insert(SymTableEntry);
 
-    SymTableEntry look_up();
+   // SymTableEntry look_up();   ----> will be needed in parser phase isA
 
 //add size
 private:
-    vector<SymTableEntry> entries;*/
+    vector<SymTableEntry> entries;
+    vector<string> scanned_token_list;  // list of extracted tokens to be inserted in symTable
 };
 
 
@@ -35,9 +36,9 @@ class SymTableEntry {
     };
 public:
     pair<string, string> token;
-    vector<string> scanned_token_list;  // list of extracted tokens to be inserted in symTable
-    scope scope;
-    int line;
+
+//    scope scope;
+//    int line;
 };
 
 #endif //LEXICALANALYZER_SYMTABLE_H

@@ -13,7 +13,8 @@ Analyzer::Analyzer() {
 
 void Analyzer::start() {
 /*
-  // init stream
+  // init stream :
+  TODO add class stream
 */
 }
 
@@ -38,6 +39,12 @@ token * Analyzer::next_token() {
      if (current_state ==phi_state){
         if(restore_last_state()){
         success = true;
+        if (search_for_token(generated_token)){
+
+        // cut substring
+        // construct SymTableEntry
+        // add it to symTable
+        }
         break;
         }
         else {
