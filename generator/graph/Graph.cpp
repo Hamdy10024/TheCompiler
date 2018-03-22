@@ -14,7 +14,12 @@ Node *Graph::getEndNode() {
     return endNode;
 }
 
+void Graph::setEndNode(Node *endNode) {
+    this->endNode = endNode;
+}
+
 void Graph::connect(Graph *graph) {
-    this->endNode->addChild(graph->startNode, "LAMBDA");
+    this->endNode->addChild((*graph->startNode->getChildren())[0]);
     this->endNode = graph->endNode;
+    // delete(graph->startNode);
 }

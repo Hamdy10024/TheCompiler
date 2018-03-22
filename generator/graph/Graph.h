@@ -5,11 +5,13 @@
 
 class Graph {
 public:
-    explicit Graph(Node *startNode);
+    Graph(Node *startNode);
 
     Node *getStartNode();
 
     Node *getEndNode();
+
+    void setEndNode(Node *endNode);
 
     void connect(Graph *graph);
 

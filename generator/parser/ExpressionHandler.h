@@ -1,0 +1,10 @@
+#ifndef LEXICALANALYZER_EXPRESSIONHANDLER_H
+#define LEXICALANALYZER_EXPRESSIONHANDLER_H
+
+
+class ExpressionHandler {
+
+};
+
+
+#endif

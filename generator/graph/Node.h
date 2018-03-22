@@ -8,16 +8,11 @@ using std::vector;
 
 class Node {
 public:
-    explicit Node(int id);
-
-    int getID();
-
-    void addChild(Node *child, string edgeValue);
+    void addChild(Edge *edge);
 
     vector<Edge *> *getChildren();
 
 private:
-    int id;
     vector<Edge *> children;
 };
 

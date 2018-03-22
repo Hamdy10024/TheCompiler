@@ -4,7 +4,6 @@
 #include <vector>
 
 class State {
-
 public:
     typedef std::pair<char *, State> transition;
 

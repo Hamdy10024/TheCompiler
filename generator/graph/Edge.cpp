@@ -1,11 +1,11 @@
 #include "Edge.h"
 
-Edge::Edge(Node *destination, string value) {
+Edge::Edge(Node *destination, Pattern *value) {
     this->destination = destination;
     this->value = value;
 }
 
-string Edge::getValue() {
+Pattern *Edge::getValue() {
     return value;
 }
 

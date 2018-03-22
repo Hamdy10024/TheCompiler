@@ -2,6 +2,7 @@
 #define LEXICALANALYZER_EDGE_H
 
 #include <string>
+#include "../Pattern.h"
 
 using std::string;
 
@@ -11,16 +12,15 @@ class Node;
 
 class Edge {
 public:
-    Edge(Node *destination, string value);
+    Edge(Node *destination, Pattern *value);
 
-    string getValue();
+    Pattern *getValue();
 
     Node *getDestination();
 
 private:
     Node *destination;
-    string value;
+    Pattern *value; // Represent the pattern for a certain transition
 };
-
 
 #endif
