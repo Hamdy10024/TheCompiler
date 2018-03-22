@@ -17,6 +17,8 @@ class SymTable {
 /*public:
     SymTable();
 
+    bool search_for_token(string token);
+
     bool insert(SymTableEntry);
 
     SymTableEntry look_up();
@@ -33,6 +35,7 @@ class SymTableEntry {
     };
 public:
     pair<string, string> token;
+    vector<string> scanned_token_list;  // list of extracted tokens to be inserted in symTable
     scope scope;
     int line;
 };
