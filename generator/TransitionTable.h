@@ -17,6 +17,7 @@ public:
 
 private:
     MinDFA::table transitionTable;
+
     State startState;
 };
 

@@ -3,7 +3,8 @@
 
 #include "State.h"
 #include "string"
-
+#include "StreamReader.h"
+#include "SymTable.h"
 using namespace std;
 
 class Analyzer {
@@ -11,7 +12,7 @@ class Analyzer {
 
 public:
 
-    Analyzer();
+    Analyzer(istream stream);
 
     typedef string token;
 
@@ -24,17 +25,19 @@ public:
 
     void handle_error();
 
+    string stream_to_string(istream &in);
+
 private:
-    int start_index;
-    int end_index;      // start and end indices used to get lexemes
     State *last_accepted_state;
     State *current_state;
     int last_accepted_index;
     int current_index;
     char current_char;
+    stream_reader *st_reader;
     // DFA
     token generated_token;
-    //symtable
+    SymTable *symtable;
+    string token_value;
     //out
 };
 
