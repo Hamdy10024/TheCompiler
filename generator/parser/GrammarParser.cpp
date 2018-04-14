@@ -1,21 +1,16 @@
 #include "GrammarParser.h"
 
-GrammarParser::GrammarParser(string fileName) : grammarFile(fileName) {}
+GrammarParser::GrammarParser(string fileName, token_table *tokenTable) : grammarFile(fileName) {
+    this->tokenTable = tokenTable;
+}
 
-GrammarParser::~GrammarParser() {}
-
-void GrammarParser::processGrammar() {
+void GrammarParser::parse() {
     string line;
     if (grammarFile.is_open()) {
         while (getline(grammarFile, line)) {
             // check that the rule matches one of the given formats first, or return error o.w
             processRule(line);
         }
-        for (auto &regDef : regDefs)
-            cout << regDef.first << "\t" << regDef.second << "\n";
-
-        for (int j = 0; j < regExps.size(); ++j)
-            cout << regExps[j].first << "\t" << regExps[j].second << "\n";
     } else {
         //TODO: Add 'ErrorHandler' class
         cout << "ERROR: COULD NOT OPEN GRAMMAR FILE!\n";
@@ -23,25 +18,63 @@ void GrammarParser::processGrammar() {
     }
 }
 
+vector<pair<string, string>> *GrammarParser::getRegExpressions() {
+    return &regExps;
+}
+
+vector<string> *GrammarParser::getKeywords() {
+    return &keywords;
+}
+
+vector<char> *GrammarParser::getPunctuations() {
+    return &punctuations;
+}
+
 void GrammarParser::isValidRule(string rule) {
 
 }
 
 void GrammarParser::processRule(string rule) {
-    if (rule[0] == '{')
+    int i = 0;
+    for (; i < rule.length(); ++i)
+        if (!isBlankSpace(rule[i]))
+            break;
+    if (rule[i] == '{')
         updateKeywords(rule);
-    else if (rule[0] == '[')
+    else if (rule[i] == '[')
         updatePunctuations(rule);
     else
         updateRegulars(rule);
 }
 
-void GrammarParser::updateKeywords(string keywordlist) {
-
+void GrammarParser::updateKeywords(string keywordList) {
+    int i = 0;
+    size_t listLength = keywordList.length();
+    while (i < listLength) {
+        if (isBlankSpace(keywordList[i]) || keywordList[i] == '{') {
+            i++;
+        } else {
+            int j = i;
+            string keyword;
+            while (j < listLength && !isBlankSpace(keywordList[j]) && keywordList[j] != '}')
+                keyword += keywordList[j++];
+            keywords.push_back(keyword);
+            tokenTable->insert_keyword(keyword);
+            i = j + 1;
+        }
+    }
 }
 
 void GrammarParser::updatePunctuations(string puncList) {
-
+    int i = 0;
+    size_t listLength = puncList.length();
+    while (i < listLength) {
+        if (!(isBlankSpace(puncList[i]) || puncList[i] == '[' || puncList[i] == ']' || puncList[i] == '\\')) {
+            punctuations.push_back(puncList[i]);
+            tokenTable->insert_keyword(string(1, puncList[i]));
+        }
+        i++;
+    }
 }
 
 void GrammarParser::updateRegulars(string line) {
@@ -58,8 +91,10 @@ void GrammarParser::updateRegulars(string line) {
     replaceDefinitions(&pattern);
     if (def)
         regDefs.push_back(make_pair(regName, pattern));
-    else
+    else {
         regExps.push_back(make_pair(regName, pattern));
+        cout<<"sorry "<<tokenTable->insert_token(regName)<<endl;
+    }
 }
 
 //TODO: Optimize
@@ -69,7 +104,7 @@ void GrammarParser::replaceDefinitions(string *pattern) {
         string regDefPattern = '(' + regDef.second + ')';
         size_t regDefLength = regDefPattern.length();
         unsigned long pos = (*pattern).find(regDef.first);
-        while(pos != string::npos) {
+        while (pos != string::npos) {
             (*pattern).replace(pos, regDef.first.length(), regDefPattern);
             pos = (*pattern).find(regDef.first, pos + regDefLength);
         }

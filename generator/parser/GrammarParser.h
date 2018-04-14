@@ -7,6 +7,7 @@
 #include <string>
 #include <algorithm>
 #include "utilities/string.h"
+#include "../../new/token_table.h"
 
 using std::vector;
 using std::pair;
@@ -16,34 +17,30 @@ using std::cout;
 
 class GrammarParser {
 public:
-    explicit GrammarParser(string fileName);
+    GrammarParser(string fileName, token_table *tokenTable);
 
-    ~GrammarParser();
+    void parse();
 
-    /* get NFAs */
+    vector<pair<string, string>> *getRegExpressions();
+
+    vector<string> *getKeywords();
+
+    vector<char> *getPunctuations();
 
 private:
-    enum RULE_TYPE {
-        REGULAR_DEFINITION,
-        REGULAR_EXPRESSION,
-        KEYWORD_DEFINITION,
-        PUNCTUATION_DEFINTION
-    };
-
     ifstream grammarFile;
-
+    token_table *tokenTable;
     vector<pair<string, string>> regDefs; // Stores <definition, pattern> pairs.
-
     vector<pair<string, string>> regExps; // Stores <expression, pattern> pairs.
-public:
-    void processGrammar();
+    vector<string> keywords;
+    vector<char> punctuations;
 
     /* checks if the given rule matches any of the language grammar patterns. */
     void isValidRule(string rule);
 
     void processRule(string rule);
 
-    void updateKeywords(string keywordlist);
+    void updateKeywords(string keywordList);
 
     void updatePunctuations(string puncList);
 

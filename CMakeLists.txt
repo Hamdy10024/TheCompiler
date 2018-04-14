@@ -1,7 +1,62 @@
-cmake_minimum_required(VERSION 3.8)
-project(LexicalAnalyzer)
+cmake_minimum_required(VERSION 3.10)
+project(TheCompiler)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp generator/State.cpp generator/State.h generator/MinDFA.cpp generator/MinDFA.h generator/TransitionTable.cpp generator/TransitionTable.h generator/SymTable.h generator/SymTable.cpp generator/graph/Graph.cpp generator/graph/Graph.h generator/graph/Node.cpp generator/graph/Node.h generator/graph/Edge.cpp generator/graph/Edge.h generator/parser/GrammarParser.cpp generator/parser/GrammarParser.h generator/parser/ExpressionHandler.cpp generator/parser/ExpressionHandler.h generator/parser/ThompsonConstructor.cpp generator/parser/ThompsonConstructor.h generator/parser/utilities/string.cpp generator/parser/utilities/string.h generator/Pattern.cpp generator/Pattern.h)
-add_executable(LexicalAnalyzer ${SOURCE_FILES})
+include_directories(generator)
+include_directories(generator/graphbuilder)
+include_directories(generator/graphbuilder/graph)
+include_directories(generator/nfa)
+include_directories(generator/parser)
+include_directories(generator/parser/utilities)
+include_directories(new)
+
+add_executable(TheCompiler
+        generator/graphbuilder/graph/Edge.cpp
+        generator/graphbuilder/graph/Edge.h
+        generator/graphbuilder/graph/Graph.cpp
+        generator/graphbuilder/graph/Graph.h
+        generator/graphbuilder/graph/Node.cpp
+        generator/graphbuilder/graph/Node.h
+        generator/graphbuilder/GraphBuilder.cpp
+        generator/graphbuilder/GraphBuilder.h
+        generator/graphbuilder/ThompsonConstructor.cpp
+        generator/graphbuilder/ThompsonConstructor.h
+        generator/nfa/FinalState.cpp
+        generator/nfa/FinalState.h
+        generator/nfa/NFA.cpp
+        generator/nfa/NFA.h
+        generator/nfa/NFAState.cpp
+        generator/nfa/NFAState.h
+        generator/parser/utilities/string.cpp
+        generator/parser/utilities/string.h
+        generator/parser/ExpressionHandler.cpp
+        generator/parser/ExpressionHandler.h
+        generator/parser/GrammarParser.cpp
+        generator/parser/GrammarParser.h
+        generator/Pattern.cpp
+        generator/Pattern.h
+        new/Analyzer.cpp
+        new/Analyzer.h
+        new/data_structures.cpp
+        new/DFA.cpp
+        new/DFA.h
+        generator/dfa/DFAState.cpp
+        generator/dfa/DFAState.h
+        new/Generator.cpp
+        new/Generator.h
+        new/headers.h
+        new/MinDFA.cpp
+        new/MinDFA.h
+        new/NFAState.cpp
+        new/NFAState.h
+        new/State.cpp
+        new/State.h
+        new/stream_reader.h
+        new/SymTable.cpp
+        new/SymTable.h
+        new/token_table.h
+        new/TransitionTable.cpp
+        new/TransitionTable.h
+        grammar.txt
+        main.cpp)

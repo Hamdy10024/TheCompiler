@@ -1,0 +1,3 @@
+C:/Users/Lenovo/Downloads/TheCompiler/TheCompiler/cmake-build-debug/CMakeFiles/TheCompiler.dir
+C:/Users/Lenovo/Downloads/TheCompiler/TheCompiler/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Lenovo/Downloads/TheCompiler/TheCompiler/cmake-build-debug/CMakeFiles/rebuild_cache.dir
