@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
-#include <string.h>
+#include <cstring>
 #include <cstdio>
 
 using namespace std;
@@ -14,7 +14,6 @@ private :
     char buff[256];
     char token[256];
     unsigned int len, shift;
-    bool eos;
     int i;
     istream *in;
 public :

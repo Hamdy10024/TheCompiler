@@ -9,7 +9,6 @@
 #define NFASTATE_H
 
 #include <vector>
-#include "Entry.h"
 #include "headers.h"
 #include "State.h"
 class NFAState : public State

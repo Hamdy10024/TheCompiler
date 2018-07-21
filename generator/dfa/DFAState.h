@@ -22,6 +22,7 @@ public:
     void addStateSet(std::vector <NFAState*> NFAStates);
     std::vector <NFAState*> getNFAStates ();
     std::vector <Pattern> all_entries();
+
     int id ;
     bool acceptingState;
     Token token;

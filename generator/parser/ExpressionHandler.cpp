@@ -1,4 +1,6 @@
 #include "ExpressionHandler.h"
+#include <stack>
+#include <algorithm>
 
 ExpressionHandler::ExpressionHandler() {
     setPrecedence();
@@ -111,7 +113,7 @@ string ExpressionHandler::infixToPostfix(string infix) {
 
 int ExpressionHandler::getPrecedence(char c) {
     unordered_map<char, int>::const_iterator i = precedence.find(c);
-    return i == precedence.end() ? MAX_PRECEDENCE : i->second;
+    return (i == precedence.end()) ? MAX_PRECEDENCE : i->second;
 }
 
 bool ExpressionHandler::contains(set<char> *opSet, char op) {

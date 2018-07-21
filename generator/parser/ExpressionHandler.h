@@ -1,7 +1,8 @@
 #ifndef LEXICALANALYZER_EXPRESSIONHANDLER_H
 #define LEXICALANALYZER_EXPRESSIONHANDLER_H
 
-#include <bits/stdc++.h>
+#include <unordered_map>
+
 #include <set>
 #include "../graphbuilder/graph/Graph.h"
 #include "../graphbuilder/GraphBuilder.h"

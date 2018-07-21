@@ -4,6 +4,7 @@
 #include "../graphbuilder/GraphBuilder.h"
 #include "../parser/ExpressionHandler.h"
 #include "NFAState.h"
+#include <queue>
 
 class NFA {
 public:

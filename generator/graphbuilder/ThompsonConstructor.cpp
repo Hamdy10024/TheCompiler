@@ -1,3 +1,4 @@
+#include <headers.h>
 #include "ThompsonConstructor.h"
 
 Graph *ThompsonConstructor::constructAND(Graph *g1, Graph *g2) {
